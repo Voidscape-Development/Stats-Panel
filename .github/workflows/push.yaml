@@ -75,9 +75,6 @@ jobs:
             'windows-x64;zip|exe'
             'windows-legacy-x64;zip'
             'windows-portable-legacy-x64;zip'
-            'macos-universal;tar.xz|pkg'
-            'ubuntu-24.04-x86_64;tar.xz|deb|ddeb'
-            'sources;tar.xz'
           )
 
           for variant_data in "${variants[@]}"; do
@@ -153,9 +150,6 @@ jobs:
             'windows-x64;zip|exe'
             'windows-legacy-x64;zip'
             'windows-portable-legacy-x64;zip'
-            'macos-universal;tar.xz|pkg'
-            'ubuntu-24.04-x86_64;tar.xz|deb|ddeb'
-            'sources;tar.xz'
           )
 
           mkdir -p "${root_dir}/nightly"

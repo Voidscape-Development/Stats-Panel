@@ -1,15 +1,17 @@
 {
-    "display_name": "Plugin Template for OBS",
-    "id": "00000000-0000-0000-0000-000000000000",
-    "version": "1.0.0",
-    "authors": ["Your Name"],
-    "name": "plugintemplate-for-obs",
-    "description": "A plugin template to build plugins from.",
-    "long_description": "A template plugin for OBS Studio that can be used as a starting point for developing new plugins.",
+    "display_name": "Vitals",
+    "id": "f810bc35-9b0d-4ebe-9551-a9d4e958de58",
+    "version": "0.1.0",
+    "authors": [
+        "Voidscape Development"
+    ],
+    "name": "vitals",
+    "description": "A compact stats dock that adapts to its size and highlights problems at a glance.",
+    "long_description": "Vitals replaces the built-in Stats dock with a compact, theme-aware dock. It changes layout to fit the space you give it, stays neutral while everything is fine, and turns amber or red when a metric crosses a threshold. It also shows GPU usage, session time and every active output, including multistream targets.",
     "urls": {
-        "repository": "<URL TO YOUR REPOSITORY>",
-        "website": "<URL TO YOUR WEBSITE>",
-        "support": "<URL TO YOUR SUPPORT PAGE>"
+        "repository": "https://github.com/voidscape-development/stats-panel",
+        "website": "https://github.com/voidscape-development/stats-panel",
+        "support": "https://github.com/voidscape-development/stats-panel/issues"
     },
     "has_banner": false,
     "has_icon": false
