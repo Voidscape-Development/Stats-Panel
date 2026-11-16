@@ -1,6 +1,6 @@
 /*
-Plugin Name
-Copyright (C) <Year> <Developer> <Email Address>
+Vitals - a compact, adaptive stats dock for OBS Studio
+Copyright (C) 2026 Voidscape Development
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -16,19 +16,45 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see <https://www.gnu.org/licenses/>
 */
 
+#include "vitals-controller.hpp"
+
+#include <obs-frontend-api.h>
 #include <obs-module.h>
 #include <plugin-support.h>
 
 OBS_DECLARE_MODULE()
 OBS_MODULE_USE_DEFAULT_LOCALE(PLUGIN_NAME, "en-US")
 
+static vitals::Controller *controller = nullptr;
+
+static void on_frontend_event(enum obs_frontend_event event, void *)
+{
+	if (controller)
+		controller->handleFrontendEvent(event);
+}
+
+MODULE_EXPORT const char *obs_module_name(void)
+{
+	return obs_module_text("Vitals.Title");
+}
+
+MODULE_EXPORT const char *obs_module_description(void)
+{
+	return obs_module_text("Vitals.Description");
+}
+
 bool obs_module_load(void)
 {
+	controller = new vitals::Controller();
+	obs_frontend_add_event_callback(on_frontend_event, nullptr);
 	obs_log(LOG_INFO, "plugin loaded successfully (version %s)", PLUGIN_VERSION);
 	return true;
 }
 
 void obs_module_unload(void)
 {
+	obs_frontend_remove_event_callback(on_frontend_event, nullptr);
+	delete controller;
+	controller = nullptr;
 	obs_log(LOG_INFO, "plugin unloaded");
 }
