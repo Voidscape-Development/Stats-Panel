@@ -18,8 +18,10 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 
 #include "vitals-gpu.hpp"
 
-#include <plugin-support.h>
+/* util/base.h must come before plugin-support.h: it declares blogva with
+ * dllimport, and MSVC rejects the reverse order (C2375). */
 #include <util/base.h>
+#include <plugin-support.h>
 
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
